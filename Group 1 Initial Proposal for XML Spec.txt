@@ -1,0 +1,48 @@
+Objects to be included in:
+
+<text>
+-font
+-fontSize
+-fontColour
+-Commands for bold <b>, italic <i> and underline <u>
+
+<audio>
+-url
+-startTime
+-stopTime
+-volume
+-loop
+-panning
+-visible icon
+
+<video>
+-url
+-startTime
+-stopTime
+-volume
+-loop
+
+<image>
+-url
+-scale
+-rotation
+
+<shape>
+-Type
+-colour
+
+Global args for above
+-xStartPos
+-yStartPos
+-xEndPos
+-yEndPos
+
+<slide>
+-idTag
+-orientation
+
+<info>
+-Author
+-Date created
+-Comment
+-numSlides
