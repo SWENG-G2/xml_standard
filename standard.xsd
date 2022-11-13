@@ -3,7 +3,7 @@
     xmlns:SWENG="SWENG"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xml:lang="EN"
-    targetNamespace="urn:SWENG" elementFormDefault="qualified">
+    targetNamespace="SWENG" elementFormDefault="qualified">
     <xs:attributeGroup name="position">
         <xs:attribute name="xCoordinate" type="xs:decimal" />
         <xs:attribute name="yCoordinate" type="xs:decimal" />
