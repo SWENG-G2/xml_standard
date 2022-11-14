@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema
-    xmlns:SWENG="SWENG"
+    xmlns:SWENG="urn:SWENG"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xml:lang="EN"
-    targetNamespace="SWENG" elementFormDefault="qualified">
+    targetNamespace="urn:SWENG" elementFormDefault="qualified">
     <xs:attributeGroup name="position">
-        <xs:attribute name="xCoordinate" type="xs:decimal" />
-        <xs:attribute name="yCoordinate" type="xs:decimal" />
+        <xs:attribute name="xCoordinate" type="xs:decimal" use="required" />
+        <xs:attribute name="yCoordinate" type="xs:decimal" use="required" />
     </xs:attributeGroup>
 
     <xs:attributeGroup name="colour">
-        <xs:attribute name="colour">
+        <xs:attribute name="colour" use="required">
             <xs:simpleType>
                 <xs:restriction base="xs:string">
-                    <xs:pattern value="^#\\(\\?:[0-9A-F]{6}\\)$" />
+                    <xs:pattern value="#([a-fA-F0-9]{8})" />
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
@@ -24,7 +24,7 @@
         <xs:attribute name="borderColour" use="optional">
             <xs:simpleType>
                 <xs:restriction base="xs:string">
-                    <xs:pattern value="^#\\(\\?:[0-9A-F]{6}\\)$" />
+                    <xs:pattern value="#([a-fA-F0-9]{8})" />
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
@@ -37,7 +37,7 @@
         <xs:attribute name="shadowColour" use="optional">
             <xs:simpleType>
                 <xs:restriction base="xs:string">
-                    <xs:pattern value="^#\\(\\?:[0-9A-F]{6}\\)$" />
+                    <xs:pattern value="#([a-fA-F0-9]{8})" />
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
@@ -46,7 +46,7 @@
     <xs:element name="presentation">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="info">
+                <xs:element name="info" minOccurs="1" maxOccurs="1">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1" />
@@ -58,43 +58,45 @@
                 </xs:element>
                 <xs:element name="slide" minOccurs="1" maxOccurs="unbounded">
                     <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="text" minOccurs="0">
-                                <xs:complexType>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element name="text" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType mixed="true">
                                     <xs:sequence>
                                         <xs:element name="b" type="xs:string" minOccurs="0" />
                                         <xs:element name="i" type="xs:string" minOccurs="0" />
                                     </xs:sequence>
-                                    <xs:attribute name="fontName" type="xs:string" />
-                                    <xs:attribute name="fontSize" type="xs:decimal" />
+                                    <xs:attribute name="fontName" type="xs:string" use="required" />
+                                    <xs:attribute name="fontSize" type="xs:decimal" use="required" />
                                     <xs:attributeGroup ref="SWENG:colour" />
                                     <xs:attributeGroup ref="SWENG:position" />
                                     <xs:attribute name="timeOnScreen" type="xs:time" use="optional" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="audio" minOccurs="0">
+                            <xs:element name="audio" minOccurs="0" maxOccurs="unbounded">
                                 <xs:complexType>
-                                    <xs:attribute name="url" type="xs:string" />
+                                    <xs:attribute name="url" type="xs:string" use="required" />
                                     <xs:attribute name="starTime" type="xs:time" use="optional" />
                                     <xs:attribute name="endTime" type="xs:time" use="optional" />
-                                    <xs:attribute name="loop" type="xs:boolean" />
+                                    <xs:attribute name="loop" type="xs:boolean" use="required" />
                                     <xs:attribute name="icon" type="xs:string" use="optional" />
                                     <xs:attributeGroup ref="SWENG:position" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="video" minOccurs="0">
+                            <xs:element name="video" minOccurs="0" maxOccurs="unbounded">
                                 <xs:complexType>
-                                    <xs:attribute name="url" type="xs:string" />
+                                    <xs:attribute name="url" type="xs:string" use="required" />
                                     <xs:attribute name="starTime" type="xs:time" use="optional" />
                                     <xs:attribute name="endTime" type="xs:time" use="optional" />
-                                    <xs:attribute name="loop" type="xs:boolean" />
+                                    <xs:attribute name="loop" type="xs:boolean" use="required" />
                                     <xs:attribute name="volume" type="xs:decimal" use="optional" />
+                                    <xs:attribute name="width" type="xs:decimal" use="required" />
+                                    <xs:attribute name="height" type="xs:decimal" use="required" />
                                     <xs:attributeGroup ref="SWENG:position" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="image" minOccurs="0">
+                            <xs:element name="image" minOccurs="0" maxOccurs="unbounded">
                                 <xs:complexType>
-                                    <xs:attribute name="url" type="xs:string" />
+                                    <xs:attribute name="url" type="xs:string" use="required" />
                                     <xs:attribute name="rotation" use="optional">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:decimal">
@@ -107,39 +109,39 @@
                                     <xs:attribute name="timeOnScreen" type="xs:time" use="optional" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="rectangle" minOccurs="0">
+                            <xs:element name="rectangle" minOccurs="0" maxOccurs="unbounded">
                                 <xs:complexType>
-                                    <xs:attribute name="length" type="xs:decimal" />
-                                    <xs:attribute name="height" type="xs:decimal" />
+                                    <xs:attribute name="width" type="xs:decimal" use="required" />
+                                    <xs:attribute name="height" type="xs:decimal" use="required" />
                                     <xs:attributeGroup ref="SWENG:colour" />
                                     <xs:attributeGroup ref="SWENG:border" />
                                     <xs:attributeGroup ref="SWENG:position" />
                                     <xs:attributeGroup ref="SWENG:shadow" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="circle" minOccurs="0">
+                            <xs:element name="circle" minOccurs="0" maxOccurs="unbounded">
                                 <xs:complexType>
-                                    <xs:attribute name="radius" type="xs:decimal" />
+                                    <xs:attribute name="radius" type="xs:decimal" use="required" />
                                     <xs:attributeGroup ref="SWENG:colour" />
                                     <xs:attributeGroup ref="SWENG:border" />
                                     <xs:attributeGroup ref="SWENG:position" />
                                     <xs:attributeGroup ref="SWENG:shadow" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="line" minOccurs="0">
+                            <xs:element name="line" minOccurs="0" maxOccurs="unbounded">
                                 <xs:complexType>
-                                    <xs:attribute name="thickness" type="xs:decimal" />
-                                    <xs:attribute name="fromX" type="xs:decimal" />
-                                    <xs:attribute name="fromY" type="xs:decimal" />
-                                    <xs:attribute name="toX" type="xs:decimal" />
-                                    <xs:attribute name="toY" type="xs:decimal" />
+                                    <xs:attribute name="thickness" type="xs:decimal" use="required" />
+                                    <xs:attribute name="fromX" type="xs:decimal" use="required" />
+                                    <xs:attribute name="fromY" type="xs:decimal" use="required" />
+                                    <xs:attribute name="toX" type="xs:decimal" use="required" />
+                                    <xs:attribute name="toY" type="xs:decimal" use="required" />
                                     <xs:attributeGroup ref="SWENG:colour" />
                                 </xs:complexType>
                             </xs:element>
-                        </xs:sequence>
-                        <xs:attribute name="id" type="xs:string" />
-                        <xs:attribute name="width" type="xs:decimal" />
-                        <xs:attribute name="height" type="xs:decimal" />
+                        </xs:choice>
+                        <xs:attribute name="id" type="xs:string" use="required" />
+                        <xs:attribute name="width" type="xs:decimal" use="required" />
+                        <xs:attribute name="height" type="xs:decimal" use="required" />
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
