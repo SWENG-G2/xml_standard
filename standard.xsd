@@ -243,19 +243,6 @@
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:attribute>
-                                    <xs:attribute name="volume" use="optional">
-                                        <xs:annotation>
-                                            <xs:documentation>
-                                                Volume for video playback. Must be between 0 and 100 (both included).
-                                            </xs:documentation>
-                                        </xs:annotation>
-                                        <xs:simpleType>
-                                            <xs:restriction base="xs:decimal">
-                                                <xs:minInclusive value="0" />
-                                                <xs:maxInclusive value="100" />
-                                            </xs:restriction>
-                                        </xs:simpleType>
-                                    </xs:attribute>
                                     <xs:attribute name="width" type="xs:decimal" use="required">
                                         <xs:annotation>
                                             <xs:documentation>
