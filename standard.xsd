@@ -253,6 +253,13 @@
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
+                                    <xs:attribute name="delay" use="optional">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:float">
+                                                <xs:minInclusive value="0.1"></xs:minInclusive>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
                                     <xs:attributeGroup ref="SWENG:position" />
                                     <xs:attributeGroup ref="SWENG:timeOnScreen" />
                                 </xs:complexType>
