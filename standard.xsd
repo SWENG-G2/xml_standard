@@ -134,23 +134,6 @@
                                     <xs:documentation> A text box. </xs:documentation>
                                 </xs:annotation>
                                 <xs:complexType mixed="true">
-                                    <xs:sequence>
-                                        <xs:choice maxOccurs="unbounded">
-                                            <xs:element name="b" type="xs:string" minOccurs="0">
-                                                <xs:annotation>
-                                                    <xs:documentation> Text within this element
-                                                        should be displayed with increased
-                                                        fontweight. </xs:documentation>
-                                                </xs:annotation>
-                                            </xs:element>
-                                            <xs:element name="i" type="xs:string" minOccurs="0">
-                                                <xs:annotation>
-                                                    <xs:documentation> Text within this element
-                                                        should be displayed in italics. </xs:documentation>
-                                                </xs:annotation>
-                                            </xs:element>
-                                        </xs:choice>
-                                    </xs:sequence>
                                     <xs:attribute name="fontName" type="xs:string" use="required">
                                         <xs:annotation>
                                             <xs:documentation> Name of the font to use to display
