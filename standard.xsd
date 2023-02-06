@@ -133,7 +133,7 @@
                                 <xs:annotation>
                                     <xs:documentation> A text box. </xs:documentation>
                                 </xs:annotation>
-                                <xs:complexType>
+                                <xs:complexType mixed="true">
                                     <xs:attribute name="fontName" type="xs:string" use="required">
                                         <xs:annotation>
                                             <xs:documentation> Name of the font to use to display
