@@ -9,7 +9,8 @@
         <numSlides>2</numSlides>
     </info>
     <slide width="500" height="500" title="1">
-        <text fontName="mono" fontSize="32" colour="#7D13CFFF" xCoordinate="45" yCoordinate="45">This
+        <text fontName="mono" fontSize="32" colour="#7D13CFFF" xCoordinate="45" yCoordinate="45"
+            width="200" height="50">This
             is a big text!</text>
         <audio url="" loop="true" xCoordinate="250" yCoordinate="100" />
         <line thickness="5" fromX="100" fromY="110" toX="400" toY="130" colour="#FF000069" />
@@ -26,7 +27,8 @@
         <circle radius="10" xCoordinate="450" yCoordinate="650" colour="#FF0000FF"
             borderColour="#00FF00FF" borderWidth="10" shadowRadius="15" shadowDx="10" shadowDy="0"
             shadowColour="#FF00FFFF" timeOnScreen="00:01:00" />
-        <text fontName="mono" fontSize="32" colour="#FF7B00FF" xCoordinate="300" yCoordinate="250" timeOnScreen="00:00:05">
+        <text fontName="mono" fontSize="32" colour="#FF7B00FF" xCoordinate="300" yCoordinate="250"
+            timeOnScreen="00:00:05" width="500" height="100">
             This will disappear in 5 seconds.
         </text>
     </slide>
