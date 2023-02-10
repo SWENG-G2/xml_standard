@@ -131,9 +131,21 @@
                         <xs:choice minOccurs="0" maxOccurs="unbounded">
                             <xs:element name="text" minOccurs="0" maxOccurs="unbounded">
                                 <xs:annotation>
-                                    <xs:documentation> A text box. </xs:documentation>
+                                    <xs:documentation>A text box. </xs:documentation>
                                 </xs:annotation>
                                 <xs:complexType mixed="true">
+                                    <xs:attribute name="width" type="xs:decimal" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation> Width of the text box within the
+                                                slide. </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="height" type="xs:decimal" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation> Height of the text box within the
+                                                slide. </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
                                     <xs:attribute name="fontName" type="xs:string" use="required">
                                         <xs:annotation>
                                             <xs:documentation> Name of the font to use to display
